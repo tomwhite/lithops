@@ -32,7 +32,7 @@ setup(
         'Click', 'pandas', 'PyYAML', 'python-dateutil',
         'pika==0.13.1', 'enum34', 'glob2', 'tqdm', 'lxml',
         'tblib', 'docker', 'requests==2.22.0', 'seaborn',
-        'matplotlib', 'kubernetes', 'ibm-cos-sdk==2.6.0'
+        'matplotlib', 'kubernetes', 'ibm-cos-sdk==2.6.0', 'gcsfs'
     ],
     include_package_data=True,
     entry_points='''
