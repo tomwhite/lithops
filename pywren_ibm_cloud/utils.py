@@ -284,7 +284,7 @@ def verify_args(func, iterdata, extra_params):
                                  "the args must be: {}".format(list(elem.keys()),
                                                                list(new_func_sig.parameters.keys())))
         elif type(elem) in (list, tuple):
-            new_elem = dict(new_func_sig.bind(*list(elem)).arguments)
+            new_elem = dict(new_func_sig.bind(list(elem)).arguments)
             new_data.append(new_elem)
         else:
             # single value (string, integer, etc)
