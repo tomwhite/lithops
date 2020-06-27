@@ -93,7 +93,7 @@ class CloudRunServingBackend:
         service_name = self._format_service_name(docker_image_name, runtime_memory)
         
         # TODO: --no-allow-unauthenticated
-        cmd = 'gcloud run deploy --allow-unauthenticated --platform=managed --region={} --image gcr.io/{} --max-instances={} --memory={} --timeout={} {}'.format(
+        cmd = 'gcloud run deploy --allow-unauthenticated --platform=managed --region={} --image gcr.io/{} --max-instances={} --memory={} --timeout={} --concurrency=1 {}'.format(
             self.region, docker_image_name, self.workers, '{}Mi'.format(runtime_memory), timeout, service_name
         )
 
