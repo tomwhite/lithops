@@ -224,8 +224,11 @@ class ResponseFuture:
             if any(key.startswith(ss) for ss in ['func', 'host', 'worker']):
                 self.stats[key] = self._call_status[key]
 
-        self.stats['worker_exec_time'] = round(self.stats['worker_end_tstamp'] - self.stats['worker_start_tstamp'], 8)
-        total_time = format(round(self.stats['worker_exec_time'], 2), '.2f')
+        if 'worker_end_tstamp' in self.stats:
+            self.stats['worker_exec_time'] = round(self.stats['worker_end_tstamp'] - self.stats['worker_start_tstamp'], 8)
+            total_time = format(round(self.stats['worker_exec_time'], 2), '.2f')
+        else:
+            total_time = "unknown"
 
         logger.debug(
             f'ExecutorID {self.executor_id} | JobID {self.job_id} - Got status from call {self.call_id} '
